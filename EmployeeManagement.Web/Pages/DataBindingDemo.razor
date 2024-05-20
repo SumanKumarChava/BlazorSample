@@ -1,0 +1,12 @@
+﻿@page "/databindingdemo"
+@inherits DataBindingDemoBase
+
+<h3>Name : @Name</h3>
+<input class="my-3" type="text" value="@Name"/>
+<hr/>
+<input class="my-3" type="text" @bind ="Name"  @bind:event="oninput"/>
+<hr/>
+<textarea @bind="Description" @bind:event="oninput"/>
+<p>Count : @Description.Length</p>
+
+
