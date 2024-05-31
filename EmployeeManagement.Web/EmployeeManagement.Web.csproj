@@ -10,6 +10,9 @@
     <ProjectReference Include="..\EmployeeManagement.Models\EmployeeManagement.Models.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\BlazorComponents\BlazorComponents.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\" />
