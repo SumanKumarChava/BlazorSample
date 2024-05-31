@@ -9,9 +9,10 @@ public class Employee
     [Required]
     [StringLength(100, MinimumLength = 2)]
     public string FirstName { get; set; }
-    [Required]
+    [Required(ErrorMessage = "LastName should be given")]
     public string LastName { get; set; }
     [Required]
+    [EmailAddress]
     public string Email { get; set; }
     public DateTime DateOfBrith { get; set; }
     public Gender Gender { get; set; }
