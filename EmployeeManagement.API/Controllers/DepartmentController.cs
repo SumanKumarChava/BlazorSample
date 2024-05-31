@@ -1,4 +1,5 @@
 ﻿using System;
+using EmployeeManagement.API.Data.Repository;
 using EmployeeManagement.API.Data.Repository.Interfaces;
 using EmployeeManagement.Models;
 using EmployeeManagement.Models.Data;
@@ -16,6 +17,21 @@ namespace EmployeeManagement.API.Controllers
         public DepartmentController(IDepartmentRepository departmentRepository)
         {
             _departmentRepository = departmentRepository;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Department>>> GetDepartments()
+        {
+            try
+            {
+                var depts = await _departmentRepository.GetAllDepartments();
+                return Ok(depts);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, string.Format("{0} : {1}", errorRetreivingDbDataMessage, ex));
+            }
         }
 
         [HttpGet("{id:int}")]

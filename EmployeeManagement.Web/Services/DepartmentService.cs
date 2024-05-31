@@ -19,7 +19,19 @@ namespace EmployeeManagement.Web.Services
             {
                 return await _httpClient.GetFromJsonAsync<Department>($"api/department/{id}");
             }
-            catch (Exception)
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<IEnumerable<Department>> GetDepartments()
+        {
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<IEnumerable<Department>>($"api/department");
+            }
+            catch (Exception ex)
             {
                 return null;
             }
