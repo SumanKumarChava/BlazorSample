@@ -13,14 +13,14 @@ namespace EmployeeManagement.API.Data.Repository
             
 		}
 
-        public IEnumerable<Department> GetAllDepartments()
+        public async Task<IEnumerable<Department>> GetAllDepartments()
         {
-            return ApiData.Departments;
+            return await ApiData.GetDepartmemts();
         }
 
-        public Department? GetDepartmentById(int departmentId)
+        public async Task<Department?> GetDepartmentById(int departmentId)
         {
-            return ApiData.Departments.FirstOrDefault(t => t.DepartmentId == departmentId);
+            return (await ApiData.GetDepartmemts()).FirstOrDefault(t => t.DepartmentId == departmentId);
         }
     }
 }

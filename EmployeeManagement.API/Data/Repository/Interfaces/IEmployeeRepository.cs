@@ -6,17 +6,17 @@ namespace EmployeeManagement.API.Data.Repository.Interfaces
 {
 	public interface IEmployeeRepository
 	{
-		IEnumerable<Employee> GetAllEmployees();
+		Task<IEnumerable<Employee>> GetAllEmployees();
 
-		Employee? GetEmployeeById(int empId);
+		Task<Employee>? GetEmployeeById(int empId);
 
-		Employee InsertEmployee(Employee emp);
+		Task<Employee> InsertEmployee(Employee emp);
 
-		Employee UpdateEmployee(Employee emp);
+		Task<Employee> UpdateEmployee(Employee emp);
 
-		bool DeleteEmployee(int empId);
+		Task<bool> DeleteEmployee(int empId);
 
-        IEnumerable<Employee> Search(string name, Gender? gender);
+        Task<IEnumerable<Employee>> Search(string name, Gender? gender);
     }
 }
 

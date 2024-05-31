@@ -20,11 +20,11 @@ namespace EmployeeManagement.API.Controllers
 		}
 
 		[HttpGet]
-		public ActionResult<IEnumerable<Employee>> GetEmployees()
+		public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
 		{
 			try
 			{
-                var employees = _employeeRepository.GetAllEmployees();
+                var employees = await _employeeRepository.GetAllEmployees();
 				return Ok(employees);
 
             }
@@ -35,11 +35,11 @@ namespace EmployeeManagement.API.Controllers
 		}
 
         [HttpGet("{id:int}")]
-        public ActionResult<Employee> GetEmployee(int id)
+        public async Task<ActionResult<Employee>> GetEmployee(int id)
 		{
 			try
 			{
-				var employee = _employeeRepository.GetEmployeeById(id);
+                Employee? employee = await _employeeRepository.GetEmployeeById(id);
 				if(employee != null)
 				{
 					return Ok(employee);
@@ -53,7 +53,7 @@ namespace EmployeeManagement.API.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult<Employee> AddEmployee([FromBody] Employee emp)
+		public async Task<ActionResult<Employee>> AddEmployee([FromBody] Employee emp)
 		{
 			try
 			{
@@ -62,7 +62,7 @@ namespace EmployeeManagement.API.Controllers
                     return BadRequest();
                 }
                 
-                var employee = _employeeRepository.InsertEmployee(emp);
+                var employee = await _employeeRepository.InsertEmployee(emp);
                 return CreatedAtAction(nameof(GetEmployee), new { id = employee.EmployeeId }, employee);
             }
             catch (Exception ex)
@@ -72,7 +72,7 @@ namespace EmployeeManagement.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Employee> UpdateEmployee(int id, Employee employee)
+        public async Task<ActionResult<Employee>> UpdateEmployee(int id, Employee employee)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace EmployeeManagement.API.Controllers
                 if (employeeToUpdate == null)
                     return NotFound($"Employee with Id = {id} not found");
 
-                return _employeeRepository.UpdateEmployee(employee);
+                return await _employeeRepository.UpdateEmployee(employee);
             }
             catch (Exception)
             {
@@ -94,7 +94,7 @@ namespace EmployeeManagement.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public ActionResult<bool> DeleteEmployee(int id)
+        public async Task<ActionResult<bool>> DeleteEmployee(int id)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace EmployeeManagement.API.Controllers
                     return NotFound($"Employee with Id = {id} not found");
                 }
 
-                return _employeeRepository.DeleteEmployee(id);
+                return await _employeeRepository.DeleteEmployee(id);
             }
             catch (Exception)
             {
@@ -115,11 +115,11 @@ namespace EmployeeManagement.API.Controllers
         }
 
         [HttpGet("{search}")]
-        public ActionResult<IEnumerable<Employee>> Search(string name, Gender? gender)
+        public async Task<ActionResult<IEnumerable<Employee>>> Search(string name, Gender? gender)
         {
             try
             {
-                var result = _employeeRepository.Search(name, gender);
+                var result = await _employeeRepository.Search(name, gender);
 
                 if (result.Any())
                 {

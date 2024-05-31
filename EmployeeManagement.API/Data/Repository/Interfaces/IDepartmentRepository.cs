@@ -6,9 +6,9 @@ namespace EmployeeManagement.API.Data.Repository.Interfaces
 {
 	public interface IDepartmentRepository
 	{
-        IEnumerable<Department> GetAllDepartments();
+        Task<IEnumerable<Department>> GetAllDepartments();
 
-        Department? GetDepartmentById(int departmentId);
+        Task<Department>? GetDepartmentById(int departmentId);
 
     }
 }

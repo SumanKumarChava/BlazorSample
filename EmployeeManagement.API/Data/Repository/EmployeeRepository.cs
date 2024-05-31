@@ -13,25 +13,25 @@ namespace EmployeeManagement.API.Data.Repository
 		{
             
         }
-        public IEnumerable<Employee> GetAllEmployees()
+        public async Task<IEnumerable<Employee>> GetAllEmployees()
         {
-            return ApiData.Employees;
+            return await ApiData.GetEmployees();
         }
 
-        public Employee? GetEmployeeById(int empId)
+        public async Task<Employee>? GetEmployeeById(int empId)
         {
-            return ApiData.Employees.FirstOrDefault(t => t.EmployeeId == empId);
+            return (await ApiData.GetEmployees()).FirstOrDefault(t => t.EmployeeId == empId);
         }
 
-        public Employee InsertEmployee(Employee emp)
+        public async Task<Employee> InsertEmployee(Employee emp)
         {
-            ApiData.Employees.Add(emp);
+            (await ApiData.GetEmployees()).Add(emp);
             return emp;
         }
 
-        public Employee UpdateEmployee(Employee emp)
+        public async Task<Employee> UpdateEmployee(Employee emp)
         {
-            var employee = GetEmployeeById(emp.EmployeeId) ?? new Employee();
+            var employee = await GetEmployeeById(emp.EmployeeId) ?? new Employee();
             employee.DateOfBrith = emp.DateOfBrith;
             employee.DepartmentId = emp.DepartmentId;
             employee.Email = emp.Email;
@@ -43,20 +43,20 @@ namespace EmployeeManagement.API.Data.Repository
             return employee;
         }
 
-        public bool DeleteEmployee(int empId)
+        public async Task<bool> DeleteEmployee(int empId)
         {
-            var employee = GetEmployeeById(empId);
+            var employee = await GetEmployeeById(empId);
             if(employee != null)
             {
-                ApiData.Employees.Remove(employee);
+                (await ApiData.GetEmployees()).Remove(employee);
                 return true;
             }
             return false;
         }
 
-        public IEnumerable<Employee> Search(string name, Gender? gender)
+        public async Task<IEnumerable<Employee>> Search(string name, Gender? gender)
         {
-            var query = ApiData.Employees;
+            var query = await ApiData.GetEmployees();
 
             if (!string.IsNullOrEmpty(name))
             {

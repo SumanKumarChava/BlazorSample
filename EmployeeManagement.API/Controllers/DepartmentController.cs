@@ -19,11 +19,11 @@ namespace EmployeeManagement.API.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult<Department> GetDepartment(int id)
+        public async Task<ActionResult<Department>> GetDepartment(int id)
         {
             try
             {
-                var dept = _departmentRepository.GetDepartmentById(id);
+                var dept = await _departmentRepository.GetDepartmentById(id);
                 if (dept != null)
                 {
                     return Ok(dept);

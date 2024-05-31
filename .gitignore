@@ -17,3 +17,6 @@ EmployeeManagement.Models/obj/Debug/net7.0/EmployeeManagement.Models.GeneratedMS
 EmployeeManagement.Models/obj/Debug/net7.0/EmployeeManagement.Models.assets.cache
 EmployeeManagement.Models/obj/Debug/net7.0/EmployeeManagement.Models.AssemblyInfoInputs.cache
 EmployeeManagement.Models/obj/Debug/net7.0/EmployeeManagement.Models.AssemblyInfo.cs
+EmployeeManagement.API/bin/Debug/net7.0/EmployeeManagement.API.dll
+*.dll
+*.pdb

@@ -57,13 +57,22 @@ namespace EmployeeManagement.API.Data
                 },
             };
 
-        public static IEnumerable<Department> Departments = new List<Department>()
+        public static List<Department> Departments = new List<Department>()
             {
                 new Department { DepartmentId = 1, DepartmentName = "IT" },
                 new Department { DepartmentId = 2, DepartmentName = "HR" },
                 new Department { DepartmentId = 3, DepartmentName = "Payroll" },
                 new Department { DepartmentId = 4, DepartmentName = "Admin" }
             };
+
+        public static async Task<List<Department>> GetDepartmemts()
+        {
+            return Departments;
+        }
+        public static async Task<List<Employee>> GetEmployees()
+        {
+            return Employees;
+        }
     }
 }
 
