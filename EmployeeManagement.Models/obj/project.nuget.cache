@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KOMOzY/wF6nxbN3+oAInGLVUyt2cYwzUsCJGGudWoC4jS+vSSaX/iiDcZOMrBUg747U81mbY6fjI5BNDNE7PCw==",
+  "dgSpecHash": "gJ7rjyJFHbw=",
   "success": true,
-  "projectFilePath": "/Users/sumanchava/Desktop/BlazorSamples/EmployeeManagement.Models/EmployeeManagement.Models.csproj",
+  "projectFilePath": "/Users/sumanchava/Projects/BlazorSample/EmployeeManagement.Models/EmployeeManagement.Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
